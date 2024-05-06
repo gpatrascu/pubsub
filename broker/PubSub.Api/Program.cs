@@ -61,6 +61,4 @@ app.MapGet("/topics/{topic}/subscriptions/{subscriptionId}/messages",
 
 app.Run();
 
-public partial class Program
-{
-}
+public partial class Program;
