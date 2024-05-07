@@ -2,7 +2,7 @@
 
 ## How to run
 
-Plan: to make things easier with Aspire. 
+Plan: make things easier with Aspire. 
 
 ### Run the broker
 ```powershell
@@ -29,7 +29,6 @@ Don't open 2 subscribers with the same name. I did not test this. I just realise
 ```powershell
 cd .\subscriber\Subscriber.Host
 dotnet run S1 # this will start a subscriber with the name S1
-```powershell
 dotnet run S2 # in a different console
 ```
 
