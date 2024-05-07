@@ -42,10 +42,10 @@ I am raising a domain event. I have a handle for it that makes a call to the inf
 ## A subscriber on the previous topic
 
 * a simple console that will print the message
-  * I think a subscriber should be enough. I can start a few instances in parallel for a demo.
-  Subscribers : 
-  * NotificationService,
-  * WarehouseService,
-  * ReportingService
+  * I think a subscriber should be enough. I can start a few instances in parallel for a demo. 
+  * Subscribers : 
+    * NotificationService,
+    * WarehouseService,
+    * ReportingService
 
   
