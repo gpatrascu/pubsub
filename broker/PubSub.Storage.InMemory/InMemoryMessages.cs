@@ -25,6 +25,12 @@ public class InMemoryMessages : IMessageStorage
     {;
         while (cancellationToken.IsCancellationRequested == false)
         {
+            if (messages.ContainsKey(topic) == false)
+            {
+                await Task.Delay(1000, cancellationToken);
+                continue;
+            }
+            
             if (offSet < messages[topic].Count)
             {
                 yield return messages[topic][offSet];
