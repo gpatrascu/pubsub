@@ -68,7 +68,7 @@ I am raising a domain event. I have a handle for it that makes a call to the inf
 
  ## CFR:
 
-* extensibility `
+* extensibility
   * should support different pub sub brokers.`
 
 ## A subscriber on the previous topic
