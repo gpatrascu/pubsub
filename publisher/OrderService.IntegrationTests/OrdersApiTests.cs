@@ -9,10 +9,11 @@ namespace OrderService.IntegrationTests;
 
 public class OrdersApiTests
 {
-    OrdersApiTests()
+    private OrdersApiTests()
     {
         FakeBrokerHttpClient.Instance.ClearMessages();
     }
+    
     private readonly HttpClient client = TestWebApplicationFactory.Instance.CreateClient();
 
     public class Wnen_submit_order : OrdersApiTests

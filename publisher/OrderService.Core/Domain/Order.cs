@@ -1,14 +1,24 @@
-﻿using OrderService.Core.Events;
+﻿using OrderService.Core.SubmitOrder;
 
-public class Order
+public class Order(string customerId)
 {
     public string Id { get; } = Guid.NewGuid().ToString();
-    public string CustomerId { get; }
-    public IList<OrderLine> OrderLines { get; } = new List<OrderLine>();
-    public IList<IDomainEvent> Events { get; } = new List<IDomainEvent>();
+    public string CustomerId { get; } = customerId;
+    public List<OrderLine> OrderLines { get; } = new();
+    public List<IDomainEvent> Events { get; } = new();
 
     public void Submit()
     {
-        Events.Add(new OrderSubmittedEvent());
+        Events.Add(new OrderSubmittedEvent
+        {
+            OrderId = Id,
+            CustomerId = CustomerId,
+            OrderLines = OrderLines
+        });
+    }
+
+    public void AddLineItems(List<OrderLine> orderLines)
+    {
+        OrderLines.AddRange(orderLines);
     }
 }

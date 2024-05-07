@@ -2,7 +2,7 @@
 
 public class InMemoryOrderRepository(EventPublisher eventPublisher) : IOrderRepository
 {
-    private readonly IDictionary<string, Order> orders = new ConcurrentDictionary<string, Order>();
+    private static readonly IDictionary<string, Order> orders = new ConcurrentDictionary<string, Order>();
 
     public Order GetOrderById(string orderId)
     {

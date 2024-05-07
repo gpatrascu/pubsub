@@ -1,8 +1,8 @@
-﻿using OrderService.Core.Events;
+﻿using OrderService.Core.SubmitOrder;
 
 namespace OrderService.Core.Ports;
 
 public interface IMessageBroker
 {
-    public Task PublishOrderSubmittedMessage(OrderSubmittedEvent message);
+    public Task PublishOrderSubmittedToOtherServices(OrderSubmittedEvent message);
 }

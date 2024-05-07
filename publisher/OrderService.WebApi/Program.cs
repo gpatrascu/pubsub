@@ -1,6 +1,6 @@
 using OrderService.Core;
-using OrderService.Core.Events;
 using OrderService.Core.Ports;
+using OrderService.Core.SubmitOrder;
 using OrderService.Infrastructure.PubSub;
 using OrderService.WebApi.Models;
 
@@ -13,14 +13,14 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<SubmitOrderCommandHandler>();
 builder.Services.AddScoped<GetOrderByIdHandler>();
-builder.Services.AddSingleton<IOrderRepository, InMemoryOrderRepository>();
-builder.Services.AddScoped<EventPublisher>();
+builder.Services.AddScoped<IOrderRepository, InMemoryOrderRepository>();
+builder.Services.AddScoped<EventPublisher>(); // this is singleton because it is used in repository
 
 builder.Services.AddScoped<IMessageBroker, MessageBroker>();
 builder.Services.AddScoped<IEventHandler<OrderSubmittedEvent>, 
     PublishOrderSubmittedIntegrationEventHandler>(); 
 
-builder.Services.AddHttpClient<BrokerHttpClient>(
+builder.Services.AddHttpClient<IBrokerHttpClient, BrokerHttpClient>(
     client =>
     {
         client.BaseAddress = new Uri("http://localhost:5117");
