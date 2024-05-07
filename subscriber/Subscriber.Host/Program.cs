@@ -1,7 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using System.Net.Http.Json;
-using PubSub.Domain;
 
 string subscriberName = Guid.NewGuid().ToString();
 if (args.Length > 0)
@@ -19,7 +18,7 @@ ConsumeMessages().Wait();
 
 async Task ConsumeMessages()
 {
-    var stream = httpClient.GetFromJsonAsAsyncEnumerable<PubSubMessage>(
+    var stream = httpClient.GetFromJsonAsAsyncEnumerable<Message>(
         $"topics/{topicName}/subscriptions/{subscriberName}/messages");
 
     await foreach (var message in stream)
@@ -29,6 +28,3 @@ async Task ConsumeMessages()
         Console.WriteLine($"Received message: {message.Payload}");
     }
 }
-
-
-

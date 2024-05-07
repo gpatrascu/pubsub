@@ -1,4 +1,5 @@
-﻿using OrderService.Core.SubmitOrder;
+﻿using OrderService.Core.Ports;
+using OrderService.Core.SubmitOrder;
 
 public class Order(string customerId)
 {
@@ -17,8 +18,15 @@ public class Order(string customerId)
         });
     }
 
-    public void AddLineItems(List<OrderLine> orderLines)
+    public void AddLineItems(List<OrderLineSubmitted> orderLines, IList<Product> productsFromCatalog)
     {
-        OrderLines.AddRange(orderLines);
+        var dictionary = productsFromCatalog.ToDictionary(product => product.Id);
+        foreach (var orderLine in orderLines)
+        {
+            if (dictionary.TryGetValue(orderLine.ProductId, out var product))
+            {
+                OrderLines.Add(new OrderLine(product, orderLine.Quantity));
+            }
+        }
     }
 }

@@ -1,15 +1,24 @@
-﻿namespace OrderService.Core.SubmitOrder;
+﻿using OrderService.Core.Ports;
 
-public class SubmitOrderCommandHandler(IOrderRepository repository)
+namespace OrderService.Core.SubmitOrder;
+
+public class SubmitOrderCommandHandler(IOrderRepository repository, IProductCatalog productCatalog)
 {
     public async Task<Order> Handle(SubmitOrderCommand submitOrderCommand)
     {
         var order = new Order(submitOrderCommand.CustomerId);
-        order.AddLineItems(submitOrderCommand.OrderLines);
+        var productsFromCatalog = await GetProductsFromCatalog(submitOrderCommand);
+        order.AddLineItems(submitOrderCommand.OrderLines, productsFromCatalog);
+            
         order.Submit();
         
         repository.Add(order);
         await repository.CommitAndSendEvents(order.Events);
         return order;
+    }
+
+    private async Task<IList<Product>> GetProductsFromCatalog(SubmitOrderCommand submitOrderCommand)
+    {
+        return await productCatalog.GetProducts(submitOrderCommand.OrderLines.Select(ol => ol.ProductId).ToList());
     }
 }

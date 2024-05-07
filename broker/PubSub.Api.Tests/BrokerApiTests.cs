@@ -31,7 +31,7 @@ public class BrokerApiTests
                         { "version", "1" },
                         { "contractClass", "SomeNamespace.SomeType" }
                     },
-                payload = payload
+               payload
             }
         );
         return request;

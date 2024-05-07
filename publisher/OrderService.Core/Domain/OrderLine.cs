@@ -1,5 +1,3 @@
-﻿public class OrderLine
-{
-    public string ProductId { get; set; }
-    public int Quantity { get; set; }
-}
+﻿using OrderService.Core.Ports;
+
+public record OrderLine(Product Product, int Quantity);

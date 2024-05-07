@@ -1,6 +1,7 @@
 using OrderService.Core;
 using OrderService.Core.Ports;
 using OrderService.Core.SubmitOrder;
+using OrderService.Infrastructure.Catalog;
 using OrderService.Infrastructure.PubSub;
 using OrderService.WebApi.Models;
 
@@ -14,6 +15,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<SubmitOrderCommandHandler>();
 builder.Services.AddScoped<GetOrderByIdHandler>();
 builder.Services.AddScoped<IOrderRepository, InMemoryOrderRepository>();
+builder.Services.AddScoped<IProductCatalog, ProductCatalog>();
+builder.Services.AddScoped<ICatalogHttpClient, FakeCatalogHttpClient>();
 builder.Services.AddScoped<EventPublisher>(); // this is singleton because it is used in repository
 
 builder.Services.AddScoped<IMessageBroker, MessageBroker>();

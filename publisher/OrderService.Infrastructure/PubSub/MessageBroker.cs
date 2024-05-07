@@ -19,7 +19,9 @@ public class MessageBroker(IBrokerHttpClient brokerHttpClient) : IMessageBroker
             CustomerId = message.CustomerId,
             OrderLines = message.OrderLines.Select(ol => new EventsContracts.OrderLine
             {
-                ProductId = ol.ProductId,
+                ProductId = ol.Product.Id,
+                ProductName = ol.Product.Name,
+                Amount = ol.Product.Price.Amount,
                 Quantity = ol.Quantity
             }).ToList()
         };

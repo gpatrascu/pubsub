@@ -1,6 +1,6 @@
 ﻿namespace OrderService.Core.Ports;
 
-public class IProductCatalog
+public interface IProductCatalog
 {
-    
+    public Task<IList<Product>> GetProducts(IList<string> productIds);
 }

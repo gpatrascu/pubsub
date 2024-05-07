@@ -6,7 +6,7 @@ namespace PubSub.Api.Tests;
 public class TestWebApplicationFactory
     : WebApplicationFactory<Program>
 {
-    public static TestWebApplicationFactory Instance = new TestWebApplicationFactory();
+    public static readonly TestWebApplicationFactory Instance = new TestWebApplicationFactory();
 
     private TestWebApplicationFactory()
     {

@@ -2,5 +2,5 @@
 
 public interface ICatalogHttpClient
 {
-    public IList<CatalogProductModel> GetProducts(IList<string> productIds);
+    public Task<IList<CatalogProductModel>> GetProducts(IList<string> productIds);
 }

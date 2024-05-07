@@ -10,7 +10,7 @@ public class FakeCatalogHttpClient : ICatalogHttpClient
         .RuleFor(p => p.Currency, f => f.Finance.Currency().Code)
         .RuleFor(p => p.Amount, f => f.Finance.Amount());
 
-    public IList<CatalogProductModel> GetProducts(IList<string> productIds)
+    public async Task<IList<CatalogProductModel>> GetProducts(IList<string> productIds)
     {
         return productIds.Select(Generate).ToList();
     }

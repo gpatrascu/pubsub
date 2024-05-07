@@ -7,7 +7,7 @@ public static class MappingExtensions
         return new SubmitOrderCommand
         {
             CustomerId = submitOrderModel.CustomerId,
-            OrderLines = submitOrderModel.OrderLines.Select(ol => new OrderLine
+            OrderLines = submitOrderModel.OrderLines.Select(ol => new OrderLineSubmitted()
             {
                 ProductId = ol.ProductId,
                 Quantity = ol.Quantity
@@ -23,7 +23,7 @@ public static class MappingExtensions
             CustomerId = order.CustomerId,
             OrderLines = order.OrderLines.Select(ol => new OrderLineModel
             {
-                ProductId = ol.ProductId,
+                ProductId = ol.Product.Id,
                 Quantity = ol.Quantity
             }).ToList()
         };
