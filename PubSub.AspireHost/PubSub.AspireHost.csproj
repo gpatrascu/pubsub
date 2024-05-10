@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsAspireHost>true</IsAspireHost>
+    <UserSecretsId>b82023be-d2a4-4238-a510-c0521abb6387</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Aspire.Hosting.AppHost" Version="8.0.0-preview.7.24251.11" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\broker\PubSub.Api\PubSub.Api.csproj" />
+    <ProjectReference Include="..\publisher\OrderService.WebApi\OrderService.WebApi.csproj" />
+    <ProjectReference Include="..\subscriber\Subscriber.Host\Subscriber.Host.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -22,6 +22,7 @@ public class MessageBroker(IBrokerHttpClient brokerHttpClient) : IMessageBroker
                 ProductId = ol.Product.Id,
                 ProductName = ol.Product.Name,
                 Amount = ol.Product.Price.Amount,
+                Currency = ol.Product.Price.Currency,
                 Quantity = ol.Quantity
             }).ToList()
         };

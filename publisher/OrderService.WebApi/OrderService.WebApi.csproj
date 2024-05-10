@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\PubSub.Defaults\PubSub.Defaults.csproj" />
     <ProjectReference Include="..\OrderService.Core\OrderService.Core.csproj" />
     <ProjectReference Include="..\OrderService.Infrastructure\OrderService.Infrastructure.csproj" />
   </ItemGroup>
