@@ -35,6 +35,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "subscriber", "subscriber", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Subscriber.Host", "subscriber\Subscriber.Host\Subscriber.Host.csproj", "{72DA2E5D-4EE2-47B7-B171-1B7274B92DC7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PubSub.Defaults", "PubSub.Defaults\PubSub.Defaults.csproj", "{A1F304CF-52CF-4314-9EB2-26306C0FFFAD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PubSub.AspireHost", "PubSub.AspireHost\PubSub.AspireHost.csproj", "{E8DB8C0C-09BD-47D7-A72E-026F1D474242}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -88,6 +92,14 @@ Global
 		{72DA2E5D-4EE2-47B7-B171-1B7274B92DC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{72DA2E5D-4EE2-47B7-B171-1B7274B92DC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{72DA2E5D-4EE2-47B7-B171-1B7274B92DC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1F304CF-52CF-4314-9EB2-26306C0FFFAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1F304CF-52CF-4314-9EB2-26306C0FFFAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1F304CF-52CF-4314-9EB2-26306C0FFFAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1F304CF-52CF-4314-9EB2-26306C0FFFAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8DB8C0C-09BD-47D7-A72E-026F1D474242}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8DB8C0C-09BD-47D7-A72E-026F1D474242}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8DB8C0C-09BD-47D7-A72E-026F1D474242}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8DB8C0C-09BD-47D7-A72E-026F1D474242}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{6A440210-045A-4139-9FEC-03DF36EFA366} = {50455CC1-F98F-470C-9D48-9AEA03AFB04A}

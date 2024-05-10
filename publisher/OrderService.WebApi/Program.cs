@@ -29,6 +29,8 @@ builder.Services.AddHttpClient<IBrokerHttpClient, BrokerHttpClient>(
         client.BaseAddress = new Uri("http://localhost:5117");
     });
 
+builder.AddServiceDefaults();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

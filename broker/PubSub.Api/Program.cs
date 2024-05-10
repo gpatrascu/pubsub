@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using PubSub.Api;
 using PubSub.Domain;
+using PubSub.Storage.InMemory;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +16,8 @@ builder.Services.AddScoped<GetSubscriptionsMessagesQueryHandler>();
 builder.Services.AddScoped<GetTopicMessagesHandler>();
 builder.Services.AddSingleton<IMessageStorage, InMemoryMessages>();
 builder.Services.AddSingleton<ISubscriptionsStorage, InMemorySubscriptions>();
+
+builder.AddServiceDefaults();
 
 var app = builder.Build();
 
@@ -38,9 +41,8 @@ app.MapDelete("/topics/{topic}",
 // we need to separate the pubsubmessage API model from the domain model
 // this is not done for the moment.
 
-app.MapPost("/topics/{topic}/messages",
-        (string topic, PubSubMessage message, [FromServices] PublishNewMessageCommandHandler handler)
-            => handler.Handle(new PublishNewMessageCommand(topic, message)))
+app.MapPost("/topics/{topic}/messages", async (string topic, PubSubMessage message, [FromServices] PublishNewMessageCommandHandler handler)
+            => await handler.Handle(new PublishNewMessageCommand(topic, message)))
     .WithName("PostMessageToTopic")
     .WithOpenApi();
 

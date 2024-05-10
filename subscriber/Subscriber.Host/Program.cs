@@ -14,9 +14,33 @@ var httpClient = new HttpClient
 
 string topicName = "order-submitted";
 
+var cts = new CancellationTokenSource();
+Console.CancelKeyPress += (s, e) =>
+{
+    Console.WriteLine("Canceling...");
+    cts.Cancel();
+    e.Cancel = true;
+};
+
 ConsumeMessages().Wait();
 
 async Task ConsumeMessages()
+{
+    while (cts.IsCancellationRequested == false)
+    {
+        try
+        {
+            await Stream();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("reconnecting...");
+            await Task.Delay(3000);
+        }
+    }
+}
+
+async Task Stream()
 {
     var stream = httpClient.GetFromJsonAsAsyncEnumerable<Message>(
         $"topics/{topicName}/subscriptions/{subscriberName}/messages");
